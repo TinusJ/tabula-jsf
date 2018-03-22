@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Dashboard</ui:define>
+
+    <ui:define name="head">
+
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form enctype="multipart/form-data">
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+
+            <p:outputPanel class="ui-g">
+                <p:outputPanel class="ui-g-12">
+                    <p:outputPanel class="card">
+
+                        <p:wizard flowListener="#{uploadWizzard.onFlowProcess}">
+                            <p:tab id="upload" title="Upload">
+                                <p:panel header="Upload Process">
+                                    <p:panelGrid columns="2" styleClass="noBorder panelGridCenter">
+                                        <p:outputLabel value="PDF File" for="@next"/>
+                                        <p:fileUpload fileLimit="1"
+                                                      immediate="true" 
+                                                      fileUploadListener="#{uploadBean.handleFileUpload}" 
+                                                      rendered="#{empty uploadBean.file}"
+                                                      mode="advanced" 
+                                                      update="@parent"
+                                                      auto="true" 
+                                                      allowTypes="/(\.|\/)(pdf)$/">
+                                        </p:fileUpload>
+                                        <p:outputLabel value="#{uploadBean.file.fileName}"  rendered="#{not empty uploadBean.file}" />
+                                    </p:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="detection" title="Detection">
+                                <p:panel header="Table Detection">
+
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="extract" title="Extract">
+                                <p:panel header="Extract Details">
+
+                                </p:panel>
+                            </p:tab>
+                        </p:wizard>
+                    </p:outputPanel>
+                </p:outputPanel>
+            </p:outputPanel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

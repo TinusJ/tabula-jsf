@@ -1,0 +1,16 @@
+/* 
+    Created on : 22 Mar 2018, 7:56:23 AM
+    Author     : Tinus
+*/
+
+.noBorder tr, .noBorder td {
+    border-style: none !important;
+}
+
+.noBorder {
+    border: none !important;
+}
+
+.panelGridCenter {
+    margin: 0 auto;
+}
